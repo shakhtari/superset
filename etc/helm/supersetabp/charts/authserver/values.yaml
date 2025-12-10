@@ -1,0 +1,4 @@
+image:
+  repository: "supersetabp/authserver"
+  tag: "latest"
+  pullPolicy: IfNotPresent

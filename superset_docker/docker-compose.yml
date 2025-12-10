@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  superset:
+    image: apache/superset:${SUPERSET_VERSION:-3.1.0}
+    container_name: superset_app
+    user: root
+    ports:
+      - "${SUPERSET_PORT:-8088}:8088"
+    volumes:
+      - ./superset_config.py:/app/pythonpath/superset_config.py
+      - ./superset_auth.py:/app/pythonpath/superset_auth.py
+      - superset_sessions:/tmp/superset_sessions
+    env_file:
+      - .env
+    environment:
+      - SUPERSET_CONFIG_PATH=/app/pythonpath/superset_config.py
+      - PYTHONPATH=/app/pythonpath
+    command: >
+      sh -c "
+      pip install --no-cache-dir psycopg2-binary Flask-Session PyJWT &&
+      superset db upgrade &&
+      superset init &&
+      gunicorn -w ${GUNICORN_WORKERS:-4} -b 0.0.0.0:8088 --timeout ${GUNICORN_TIMEOUT:-120} --log-level info 'superset.app:create_app()'
+      "
+
+volumes:
+  superset_sessions:

@@ -1,0 +1,13 @@
+global:
+  hosts:
+    dbmigrator: "[RELEASE_NAME]-dbmigrator"
+    web: "[RELEASE_NAME]-web"
+    httpapi: "[RELEASE_NAME]-httpapihost"
+    authserver: "[RELEASE_NAME]-authserver"
+  connectionStrings:
+    default: "Host=[RELEASE_NAME]-postgresql;Port=5432;Database=SupersetABP;User ID=postgres;Password=myPassword;"
+  dotnetEnvironment: "Staging"
+  disablePII: "false"
+  stringEncryptionDefaultPassPhrase: "3NDmabfaUs0HmCi9"
+  abpStudioClient:
+    isLinkEnabled: "true"

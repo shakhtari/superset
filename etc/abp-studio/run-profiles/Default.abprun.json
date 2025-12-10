@@ -1,0 +1,41 @@
+﻿{
+  "applications": {
+    "Docker-Dependencies": {
+      "type": "cli",
+      "startCommand": "./up.ps1",
+      "stopCommand": "./down.ps1",
+      "workingDirectory": "../../docker",
+      "folder": "infrastructure",
+      "execution": {
+        "order": 5
+      }
+    },
+    "SupersetABP.AuthServer": {
+      "type": "dotnet-project",
+      "launchUrl": "https://localhost:44332",
+      "path": "../../../src/SupersetABP.AuthServer/SupersetABP.AuthServer.csproj",
+      "kubernetesService": ".*-authserver$",
+      "execution": {
+        "order": 3
+      }
+    },
+    "SupersetABP.HttpApi.Host": {
+      "type": "dotnet-project",
+      "launchUrl": "https://localhost:44313",
+      "path": "../../../src/SupersetABP.HttpApi.Host/SupersetABP.HttpApi.Host.csproj",
+      "kubernetesService": ".*-httpapihost$",
+      "execution": {
+        "order": 4
+      }
+    },
+    "SupersetABP.Web": {
+      "type": "dotnet-project",
+      "launchUrl": "https://localhost:44327",
+      "path": "../../../src/SupersetABP.Web/SupersetABP.Web.csproj",
+      "kubernetesService": ".*-web$",
+      "execution": {
+        "order": 2
+      }
+    }
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.LeptonXTheme": {
+      "version": "4.0.3",
+      "isInstalled": true
+    },
+    "Volo.Abp.TextTemplateManagement": {
+      "version": "9.0.2",
+      "isInstalled": true
+    },
+    "Volo.Abp.LanguageManagement": {
+      "version": "9.0.2",
+      "isInstalled": true
+    },
+    "Volo.Abp.OpenIddict.Pro": {
+      "version": "9.0.2",
+      "isInstalled": true
+    },
+    "Volo.Abp.Gdpr": {
+      "version": "9.0.2",
+      "isInstalled": true
+    },
+    "Volo.Abp.AuditLogging.Pro": {
+      "version": "9.0.2",
+      "isInstalled": true
+    },
+    "Volo.Saas": {
+      "version": "9.0.2",
+      "isInstalled": true
+    },
+    "Volo.Abp.Identity.Pro": {
+      "version": "9.0.2",
+      "isInstalled": true
+    },
+    "Volo.Abp.Account.Pro": {
+      "version": "9.0.2",
+      "isInstalled": true
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "9.0.2",
+      "isInstalled": true
+    },
+    "Volo.Abp.PermissionManagement": {
+      "version": "9.0.2",
+      "isInstalled": true
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "9.0.2",
+      "isInstalled": true
+    },
+    "Atolla.Module.Superset": {
+      "path": "modules/atolla.module.superset/Atolla.Module.Superset.abpmdl"
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "SupersetABP.Application": {
+      "path": "src/SupersetABP.Application/SupersetABP.Application.abppkg",
+      "folder": "src"
+    },
+    "SupersetABP.Application.Tests": {
+      "path": "test/SupersetABP.Application.Tests/SupersetABP.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "SupersetABP.Domain.Shared": {
+      "path": "src/SupersetABP.Domain.Shared/SupersetABP.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "SupersetABP.Application.Contracts": {
+      "path": "src/SupersetABP.Application.Contracts/SupersetABP.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "SupersetABP.HttpApi": {
+      "path": "src/SupersetABP.HttpApi/SupersetABP.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "SupersetABP.HttpApi.Client": {
+      "path": "src/SupersetABP.HttpApi.Client/SupersetABP.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "SupersetABP.Web": {
+      "path": "src/SupersetABP.Web/SupersetABP.Web.abppkg",
+      "folder": "src"
+    },
+    "SupersetABP.AuthServer": {
+      "path": "src/SupersetABP.AuthServer/SupersetABP.AuthServer.abppkg",
+      "folder": "src"
+    },
+    "SupersetABP.HttpApi.Host": {
+      "path": "src/SupersetABP.HttpApi.Host/SupersetABP.HttpApi.Host.abppkg",
+      "folder": "src"
+    },
+    "SupersetABP.EntityFrameworkCore.Tests": {
+      "path": "test/SupersetABP.EntityFrameworkCore.Tests/SupersetABP.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "SupersetABP.EntityFrameworkCore": {
+      "path": "src/SupersetABP.EntityFrameworkCore/SupersetABP.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "SupersetABP.TestBase": {
+      "path": "test/SupersetABP.TestBase/SupersetABP.TestBase.abppkg",
+      "folder": "test"
+    },
+    "SupersetABP.Domain.Tests": {
+      "path": "test/SupersetABP.Domain.Tests/SupersetABP.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "SupersetABP.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/SupersetABP.HttpApi.Client.ConsoleTestApp/SupersetABP.HttpApi.Client.ConsoleTestApp.abppkg",
+      "folder": "test"
+    },
+    "SupersetABP.DbMigrator": {
+      "path": "src/SupersetABP.DbMigrator/SupersetABP.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "SupersetABP.Domain": {
+      "path": "src/SupersetABP.Domain/SupersetABP.Domain.abppkg",
+      "folder": "src"
+    }
+  }
+}

@@ -1,0 +1,102 @@
+﻿@page
+@model SupersetABP.Web.Pages.SupersetDashboard.IndexModel
+@using Volo.Abp.Users
+@inject ICurrentUser CurrentUser
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="mb-0">
+                <i class="fas fa-chart-bar"></i> Analytics Dashboard
+            </h3>
+        </div>
+        <div class="card-body">
+            <div id="loading" class="text-center p-5">
+                <div class="spinner-border text-primary mb-3"></div>
+                <h4>Superset Açılıyor...</h4>
+                <p class="text-muted">Yeni sekmede Superset açılacak ve otomatik login yapılacak.</p>
+                <p class="mt-4">
+                    <strong>Not:</strong> Eğer yeni sekme açılmadıysa, tarayıcınızın popup engelleyicisini kontrol edin.
+                </p>
+            </div>
+
+            <div id="success" style="display:none" class="text-center p-5">
+                <div class="alert alert-success">
+                    <i class="fas fa-check-circle fa-3x mb-3"></i>
+                    <h4>✅ Superset Başarıyla Açıldı!</h4>
+                    <p>Superset yeni sekmede açıldı ve otomatik login yapıldı.</p>
+                    <p class="mt-4">
+                        <a href="http://localhost:8088" target="_blank" class="btn btn-primary btn-lg">
+                            <i class="fas fa-external-link-alt"></i> Superset'i Tekrar Aç
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <div id="error" style="display:none" class="p-5">
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-triangle fa-3x mb-3"></i>
+                    <h4>Hata!</h4>
+                    <p id="error-msg"></p>
+                    <div class="mt-4">
+                        <button class="btn btn-primary" onclick="location.reload()">
+                            <i class="fas fa-sync"></i> Tekrar Dene
+                        </button>
+                        <a href="http://localhost:8088" target="_blank" class="btn btn-secondary">
+                            <i class="fas fa-external-link-alt"></i> Manuel Aç
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        (async function() {
+            try {
+                console.log('=== SSO START ===');
+
+                const username = '@CurrentUser.UserName';
+                const email = '@CurrentUser.Email';
+                const firstName = '@CurrentUser.Name';
+                const roles = '@(string.Join(",", CurrentUser.Roles ?? new string[0]))';
+
+                console.log('User:', username);
+                console.log('Roles:', roles);
+
+                if (!username) {
+                    throw new Error('Kullanıcı bilgisi bulunamadı. Lütfen login olun.');
+                }
+
+                // Build login URL
+                const loginUrl = `http://localhost:8088/api/v1/auth/abp-login?username=${encodeURIComponent(username)}&email=${encodeURIComponent(email)}&first_name=${encodeURIComponent(firstName)}&roles=${encodeURIComponent(roles)}`;
+
+                console.log('Opening Superset in new tab...');
+
+                // Open Superset in new tab
+                const supersetTab = window.open(loginUrl, '_blank');
+
+                if (!supersetTab) {
+                    throw new Error('Yeni sekme açılamadı! Lütfen tarayıcınızın popup engelleyicisini devre dışı bırakın.');
+                }
+
+                console.log('✅ Superset tab opened');
+
+                // Show success message after 2 seconds
+                setTimeout(() => {
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('success').style.display = 'block';
+                }, 2000);
+
+            } catch (err) {
+                console.error('❌ Error:', err);
+
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error-msg').textContent = err.message;
+            }
+        })();
+    </script>
+}
